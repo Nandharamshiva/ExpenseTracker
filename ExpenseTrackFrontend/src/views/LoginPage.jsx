@@ -57,59 +57,76 @@ export function LoginPage() {
   }
 
   return (
-    <div className="page">
-      <div className="card auth-card">
-        <h1 className="h1">Welcome back</h1>
-        <p className="muted">Login to manage your income, expenses, and PnL.</p>
+    <div className="page auth-page">
+      <div className="aurora one" aria-hidden="true" />
+      <div className="aurora two" aria-hidden="true" />
 
-        {error ? <div className="alert">{error}</div> : null}
+      <div className="auth-grid">
+        <div className="card welcome-card hero-card">
+          <div className="eyebrow">Expense Tracker</div>
+          <h1 className="h1">Welcome back, creator</h1>
+          <p className="muted">Design-forward finance tracking with colorful insights, instant filters, and OAuth sign-in.</p>
 
-        <form className="form" onSubmit={onSubmit}>
-          <label className="field">
-            <span className="label">Username or email</span>
-            <input
-              className="input"
-              value={usernameOrEmail}
-              onChange={(e) => setUsernameOrEmail(e.target.value)}
-              autoComplete="username"
-              placeholder="e.g. shanker or shanker@email.com"
-              required
-            />
-          </label>
-
-          <label className="field">
-            <span className="label">Password</span>
-            <input
-              className="input"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              autoComplete="current-password"
-              required
-            />
-          </label>
-
-          <button className="btn primary" type="submit" disabled={submitting}>
-            {submitting ? 'Signing in…' : 'Login'}
-          </button>
-        </form>
-
-        <div className="row space-between">
-          <Link className="link" to="/signup">
-            Create account
-          </Link>
-          <div className="muted small">Backend: /api/auth/login</div>
+          <ul className="feature-list">
+            <li className="feature-item"><span className="dot" /> Add income and expenses with two clicks.</li>
+            <li className="feature-item"><span className="dot" /> Smart filters for time, category, and amount.</li>
+            <li className="feature-item"><span className="dot" /> Live PnL snapshot that stays in sync.</li>
+          </ul>
         </div>
 
-        <div className="divider" />
+        <div className="card auth-card glow">
+          <h1 className="h1 gradient-text">Sign in</h1>
+          <p className="muted">Use your credentials or social login to jump into the dashboard.</p>
 
-        <div className="row gap">
-          <a className="btn" href="/oauth2/authorization/google">
-            Login with Google
-          </a>
-          <a className="btn" href="/oauth2/authorization/github">
-            Login with GitHub
-          </a>
+          {error ? <div className="alert">{error}</div> : null}
+
+          <form className="form" onSubmit={onSubmit}>
+            <label className="field">
+              <span className="label">Username or email</span>
+              <input
+                className="input"
+                value={usernameOrEmail}
+                onChange={(e) => setUsernameOrEmail(e.target.value)}
+                autoComplete="username"
+                placeholder="e.g. shanker or shanker@email.com"
+                required
+              />
+            </label>
+
+            <label className="field">
+              <span className="label">Password</span>
+              <input
+                className="input"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                autoComplete="current-password"
+                required
+              />
+            </label>
+
+            <button className="btn primary" type="submit" disabled={submitting}>
+              {submitting ? 'Signing in…' : 'Login'}
+            </button>
+          </form>
+
+          <div className="row space-between">
+            <Link className="link" to="/signup">
+              Create account
+            </Link>
+            <div className="muted small">Backend: /api/auth/login</div>
+          </div>
+
+          <div className="divider" />
+
+          <div className="row gap wrap">
+            <a className="btn ghost" href="/oauth2/authorization/google">
+              Login with Google
+            </a>
+            <a className="btn ghost" href="/oauth2/authorization/github">
+              Login with GitHub
+            </a>
+          </div>
         </div>
       </div>
     </div>

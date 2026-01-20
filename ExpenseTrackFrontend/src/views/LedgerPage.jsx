@@ -202,21 +202,35 @@ export function LedgerPage() {
 
   return (
     <div className="stack">
-      <div className="row space-between">
-        <div>
-          <h1 className="h1">Dashboard</h1>
-          <div className="muted">Add entries, filter/sort, and view total PnL.</div>
+      <div className="card hero-card">
+        <div className="row space-between wrap gap">
+          <div className="stack" style={{ gap: 10 }}>
+            <div className="eyebrow">Dashboard</div>
+            <h1 className="h1 gradient-text">Colorful cashflow cockpit</h1>
+            <div className="muted">Add expenses and income, slice by category or source, and watch PnL update live.</div>
+            <div className="badges">
+              <span className="pill income">Income ready</span>
+              <span className="pill expense">Expense capture</span>
+              <span className="pill">Live PnL</span>
+            </div>
+          </div>
+
+          <div className="row gap wrap">
+            <div className="chip">GET /api/ledger/entries</div>
+            <div className="chip">GET /api/ledger/summary</div>
+            <button className="btn primary" type="button" onClick={load} disabled={loading}>
+              {loading ? 'Refreshing…' : 'Refresh data'}
+            </button>
+          </div>
         </div>
-        <button className="btn" type="button" onClick={load} disabled={loading}>
-          {loading ? 'Refreshing…' : 'Refresh'}
-        </button>
       </div>
 
       {error ? <div className="alert">{error}</div> : null}
 
       <div className="grid-2">
-        <div className="card">
+        <div className="card glow">
           <h2 className="h2">Add expense</h2>
+          <p className="muted small">Categorize spending with vibrant pills.</p>
           <form className="form" onSubmit={addExpense}>
             <label className="field">
               <span className="label">Description</span>
@@ -261,8 +275,9 @@ export function LedgerPage() {
           </form>
         </div>
 
-        <div className="card">
+        <div className="card glow">
           <h2 className="h2">Add income</h2>
+          <p className="muted small">Log inflows to balance your PnL.</p>
           <form className="form" onSubmit={addIncome}>
             <label className="field">
               <span className="label">Description</span>
@@ -309,11 +324,13 @@ export function LedgerPage() {
       </div>
 
       <div className="card">
-        <div className="row space-between">
+        <div className="row space-between wrap">
           <h2 className="h2">Filters & sorting</h2>
-          <button className="btn" type="button" onClick={resetFilters}>
-            Reset
-          </button>
+          <div className="row gap">
+            <button className="btn ghost" type="button" onClick={resetFilters}>
+              Reset
+            </button>
+          </div>
         </div>
 
         <div className="filters">
@@ -410,9 +427,9 @@ export function LedgerPage() {
       </div>
 
       <div className="card">
-        <div className="row space-between">
+        <div className="row space-between wrap">
           <h2 className="h2">Entries</h2>
-          <div className="muted small">GET /api/ledger/entries</div>
+          <div className="muted small">Tracking {entries.length} items</div>
         </div>
 
         <div className="table">

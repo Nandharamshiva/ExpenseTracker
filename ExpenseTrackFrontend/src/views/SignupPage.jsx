@@ -28,60 +28,77 @@ export function SignupPage() {
   }
 
   return (
-    <div className="page">
-      <div className="card auth-card">
-        <h1 className="h1">Create your account</h1>
-        <p className="muted">Sign up to start tracking expenses and income.</p>
+    <div className="page auth-page">
+      <div className="aurora one" aria-hidden="true" />
+      <div className="aurora two" aria-hidden="true" />
 
-        {error ? <div className="alert">{error}</div> : null}
+      <div className="auth-grid">
+        <div className="card welcome-card hero-card">
+          <div className="eyebrow">Create</div>
+          <h1 className="h1">Open your money cockpit</h1>
+          <p className="muted">Colorful analytics, quick capture flows, and OAuth in a single dashboard.</p>
 
-        <form className="form" onSubmit={onSubmit}>
-          <label className="field">
-            <span className="label">Username</span>
-            <input
-              className="input"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="min 1 char"
-              required
-            />
-          </label>
+          <ul className="feature-list">
+            <li className="feature-item"><span className="dot" /> Unlimited ledgers with filters that stick.</li>
+            <li className="feature-item"><span className="dot" /> Dual forms for expenses and income.</li>
+            <li className="feature-item"><span className="dot" /> Live PnL + export-friendly tables.</li>
+          </ul>
+        </div>
 
-          <label className="field">
-            <span className="label">Email</span>
-            <input
-              className="input"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com"
-              required
-            />
-          </label>
+        <div className="card auth-card glow">
+          <h1 className="h1 gradient-text">Sign up</h1>
+          <p className="muted">Just three fields to spin up your account.</p>
 
-          <label className="field">
-            <span className="label">Password</span>
-            <input
-              className="input"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="6-30 chars"
-              minLength={6}
-              required
-            />
-          </label>
+          {error ? <div className="alert">{error}</div> : null}
 
-          <button className="btn primary" type="submit" disabled={submitting}>
-            {submitting ? 'Creating…' : 'Signup'}
-          </button>
-        </form>
+          <form className="form" onSubmit={onSubmit}>
+            <label className="field">
+              <span className="label">Username</span>
+              <input
+                className="input"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="min 1 char"
+                required
+              />
+            </label>
 
-        <div className="row space-between">
-          <Link className="link" to="/login">
-            Back to login
-          </Link>
-          <div className="muted small">Backend: /api/auth/signup</div>
+            <label className="field">
+              <span className="label">Email</span>
+              <input
+                className="input"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="you@example.com"
+                required
+              />
+            </label>
+
+            <label className="field">
+              <span className="label">Password</span>
+              <input
+                className="input"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="6-30 chars"
+                minLength={6}
+                required
+              />
+            </label>
+
+            <button className="btn primary" type="submit" disabled={submitting}>
+              {submitting ? 'Creating…' : 'Signup'}
+            </button>
+          </form>
+
+          <div className="row space-between">
+            <Link className="link" to="/login">
+              Back to login
+            </Link>
+            <div className="muted small">Backend: /api/auth/signup</div>
+          </div>
         </div>
       </div>
     </div>

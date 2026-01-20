@@ -15,6 +15,7 @@ export function AppLayout({ children }) {
       <header className="topbar">
         <div className="topbar-inner">
           <Link className="brand" to="/">
+            <span className="brand-dot" aria-hidden="true" />
             Expense Tracker
           </Link>
 
@@ -25,8 +26,10 @@ export function AppLayout({ children }) {
           </nav>
 
           <div className="topbar-right">
-            <div className="muted small">{user?.username || user?.email || ''}</div>
-            <button className="btn" type="button" onClick={onLogout}>
+            <div className="avatar" title={user?.username || user?.email || ''}>
+              {(user?.username || user?.email || 'ET')[0]?.toUpperCase()}
+            </div>
+            <button className="btn ghost" type="button" onClick={onLogout}>
               Logout
             </button>
           </div>
